@@ -1,5 +1,17 @@
 set nocursorline " don't highlight current line
 
+" set something for Calendar
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" Configure calendar
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+let g:calendar_first_day = 'monday'
+let g:calendar_clock_12hour = 1
+let g:calendar_view = 'week'
+
 " keyboard shortcuts
 inoremap jj <ESC>
 
@@ -7,10 +19,15 @@ inoremap jj <ESC>
 map <F5> i`Ea`
 map <F6> i`ea`
 
+" colorscheme pencil
+" colorscheme solarized
 set background=dark
 
 " Recognize puppet files as ruby syntax
 au BufRead,BufNewFile *.pp        set filetype=ruby
+
+" Recognize racket files
+autocmd BufRead,BufNewFile *.rkt  set filetype=racket
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
@@ -27,4 +44,65 @@ function! s:RemoveConflictingAlignMaps()
 endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+" Configure pencil
+let g:pencil#wrapModeDefault = 'hard'
+let g:pencil#textwidth = 77   " default = 74
+let g:pencil#joinspaces = 1   " 0=one space; 1=two spaces
+let g:pencil#cursorwrap = 1   " 0=disabled, 1=enable (def)
+
+" conceal features
+" let g:pencil#conceallevel = 3     " 0=off, 1=onechar, 2=hidechar, 3=hideall
+" let g:pencil#concealcursor = 'c'  " n=normal, v=visual, i=insert, c=command
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'soft'})
+  autocmd FileType textile call pencil#init()
+  autocmd FileType text call pencil#init({'wrap': 'hard'})
+augroup END
+nnoremap <silent> <leader>p :ShiftPencil<cr>
+
+" configure vim-wheel
+let g:wheel#map#mouse = 1    " 1=natural, 0=disable, -1=reverse
+
+" configure groovy/grails
+let tlist_groovy_settings = 'groovy;p:package;c:class;i:interface;f:function;v:variables'
+set tags=./tags,./TAGS,tags;~,TAGS;~
+
+" configure CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tgz
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'SOME_BAD_SYMLINKS',
+    \ }
+
+" configure vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 2
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+" make an easy linenumber toggle
+nnoremap <leader>n :set invnumber<CR>
+
+" toggle windows with CTRL-W
+nnoremap <leader>w <C-W><C-W>
+
+" enable a paste/nopaste toggle
+map <leader>P :set paste<CR>
+set pastetoggle=,P
+
+" show our mappings
+nmap <leader>? :map<CR>
 
