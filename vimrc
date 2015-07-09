@@ -8,6 +8,7 @@ syntax enable
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+let g:vundle_default_git_proto = 'git'
 call vundle#rc()
 
 " install Vundle bundles
