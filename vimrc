@@ -26,7 +26,9 @@ set autoread                                                 " reload files when
 set backspace=2                                              " Fix broken backspace in some setups
 set backupcopy=yes                                           " see :help crontab
 set clipboard=unnamed                                        " yank and paste with the system clipboard
-set directory-=.                                             " don't store swapfiles in the current directory
+" if we don't include the current directory for vi swapfiles, then collisions
+" will occur for identically named files in different directories.
+" set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
