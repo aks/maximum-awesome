@@ -1,4 +1,4 @@
-set nocursorline " don't highlight current line
+" set nocursorline " don't highlight current line
 
 " set something for Calendar
 if !has('gui_running')
@@ -21,6 +21,15 @@ map <F6> i`ea`
 
 " colorscheme pencil
 " colorscheme solarized
+" gui settings
+"if (&t_Co == 256 || has('gui_running'))
+"  if ($TERM_PROGRAM == 'iTerm.app')
+"    colorscheme argonaut
+"  else
+"    colorscheme desert
+"  endif
+"endif
+
 set background=dark
 
 " Recognize puppet files as ruby syntax
@@ -28,6 +37,9 @@ au BufRead,BufNewFile *.pp        set filetype=ruby
 
 " Recognize racket files
 autocmd BufRead,BufNewFile *.rkt  set filetype=racket
+
+" Recognize less files as being CSS
+au BufRead,BufNewFile *.less      set filetype=css
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
