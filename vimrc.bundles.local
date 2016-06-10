@@ -14,6 +14,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'Raimondi/delimitMate'
 Bundle 'marijnh/tern_for_vim'
+Bundle 'lambdatoast/elm.vim'
 "Plugin 'Valloric/YouCompleteMe'
 " -- NOT WORKING -- Bundle 'Valloric/YouCompleteMe'
 
