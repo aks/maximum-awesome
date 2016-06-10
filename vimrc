@@ -51,7 +51,9 @@ set wildmode=longest,list,full
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
+  if !has('nvim')
+    set ttymouse=xterm2
+  endif
 endif
 
 " keyboard shortcuts

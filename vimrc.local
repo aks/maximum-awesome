@@ -1,9 +1,14 @@
-" set nocursorline " don't highlight current line
+set nocursorline      " don't highlight current line
+set norelativenumber  " don't show relative line numbers
 
 " set something for Calendar
 if !has('gui_running')
   set t_Co=256
 endif
+
+" set python paths
+let g:python_host_prog = '/usr/local/opt/pyenv/versions/2.7.11/bin/python'
+let g:python3_host_prog = '/usr/local/opt/pyenv/versions/3.5.1/bin/python'
 
 " Configure calendar
 let g:calendar_google_calendar = 1
@@ -34,6 +39,10 @@ set background=dark
 
 " Recognize puppet files as ruby syntax
 au BufRead,BufNewFile *.pp        set filetype=ruby
+
+" we're using rbenv, so the ruby path changes from directory to directory
+" let g:ruby_path = system('which ruby')
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
 " Recognize racket files
 autocmd BufRead,BufNewFile *.rkt  set filetype=racket
@@ -117,4 +126,9 @@ set pastetoggle=,P
 
 " show our mappings
 nmap <leader>? :map<CR>
+
+" see http://andrew.stwrt.ca/posts/project-specific-vimrc/
+" enable project specific vimrc
+set exrc
+set secure
 

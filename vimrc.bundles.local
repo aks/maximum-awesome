@@ -16,6 +16,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'marijnh/tern_for_vim'
+Bundle 'lambdatoast/elm.vim'
 "Plugin 'Valloric/YouCompleteMe'
 " -- NOT WORKING -- Bundle 'Valloric/YouCompleteMe'
 
