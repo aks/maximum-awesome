@@ -134,7 +134,7 @@ namespace :install do
       abort "Failed to tap caskroom/homebrew-cask in Homebrew."
     end
 
-    brew_install 'brew-cask'
+    brew_install 'cask'
   end
 
   desc 'Install The Silver Searcher'
